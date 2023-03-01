@@ -39,7 +39,7 @@ int main()
     cout << "\nCapacity : " << g1.capacity();
     cout << "\nMax_Size : " << g1.max_size();
 
-    // resizes the vector size to 4
+    // resizes the vector size to 4-Statement and Operators
     g1.resize(4);
 
     // prints the vector size after resize()

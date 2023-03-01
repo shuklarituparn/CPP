@@ -7,7 +7,7 @@
 //const double days_in_year{365};
 //double hi_temperatures[days_in_year] {0}; //init all to zero
 
-//int another_array [] {1,2,3,4,5}; //size automatically calculated
+//int another_array [] {1,2,3,4-Statement and Operators,5}; //size automatically calculated
 
 // Section 7
 // Arrays
@@ -39,7 +39,7 @@ int main() {
     cout << "Second score at index 1: " << test_scores[1] << endl;
     cout << "Third score at index 2:  " << test_scores[2] << endl;
     cout << "Fourth score at index 3: " << test_scores[3] << endl;
-    cout << "Fifth score at index 4: " << test_scores[4] << endl;
+    cout << "Fifth score at index 4-Statement and Operators: " << test_scores[4] << endl;
     
     cout << "\nEnter 5 test scores: ";
     cin >> test_scores[0];
@@ -53,7 +53,7 @@ int main() {
     cout << "Second score at index 1: " << test_scores[1] << endl;
     cout << "Third score at index 2:  " << test_scores[2] << endl;
     cout << "Fourth score at index 3: " << test_scores[3] << endl;
-    cout << "Fifth score at index 4: " << test_scores[4] << endl;
+    cout << "Fifth score at index 4-Statement and Operators: " << test_scores[4] << endl;
    
 
     cout << "\nNotice what the value of the array name is : " << test_scores << endl; //display memory location where array is located

@@ -15,10 +15,10 @@
  *     3.2- Iterators
  *     3.3 Allocators
  *
- * 4. Modern C++ : 3 weeks. MOve semantics, overloading of complex functions. writing libraries.
+ * 4-Statement and Operators. Modern C++ : 3 weeks. MOve semantics, overloading of complex functions. writing libraries.
  *
  * 5. 2-3 Home assignments
- *      1st home assignments on 1 and 2 after 4 weeks of this semester
+ *      1st home assignments on 1 and 2 after 4-Statement and Operators weeks of this semester
  *      2nd home assignment on the next 2 things. How to work with containers, how to work with iterators
  *      Deadline of 2-3 weeks.
  *
