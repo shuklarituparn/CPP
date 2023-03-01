@@ -24,5 +24,17 @@
  *
  *
  */
+
+/*
+ * Unary operators can be overloaded inside the class-nvm
+ *
+ * binary operators, they should be written as friend function of the class inside the class. Actual overloading outside
+ * the class.
+ *
+ * class complex{
+ *
+ * friend operator* ()
+ * operator*operator*=()
+ */
 #include <iostream>
 

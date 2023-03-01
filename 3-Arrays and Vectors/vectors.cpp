@@ -74,13 +74,34 @@ Removal or Deletion in a Vector of Vectors
 
 Elements can be removed from a vector of vectors using the pop_back() function of C++ STL.
 
-Below example demonstrates the removal operation in a vector of vectors. The code removes elements from a 2D vector by using the pop_back() function and then displays the matrix.
+Below example demonstrates the removal operation in a vector of vectors. The code removes elements from a 2D vector by
+ using the pop_back() function and then displays the matrix.
 Syntax:
 
 vector_name[row_position].pop_back()
 
 */
+/*
+ *  begin() – Returns an iterator pointing to the first element in the vector
 
+    end() – Returns an iterator pointing to the theoretical element that follows the last element in the vector
+
+    rbegin() – Returns a reverse iterator pointing to the last element in the vector (reverse beginning).
+    It moves from last to first element
+
+    rend() – Returns a reverse iterator pointing to the theoretical element preceding the first element in the vector
+    (considered as reverse end)
+
+    cbegin() – Returns a constant iterator pointing to the first element in the vector.
+
+    cend() – Returns a constant iterator pointing to the theoretical element that follows the last element in the vector
+
+    crbegin() – Returns a constant reverse iterator pointing to the last element in the vector (reverse beginning).
+    It moves from last to first element
+
+    crend() – Returns a constant reverse iterator pointing to the theoretical element preceding the first element in the
+    vector (considered as reverse end)
+ */
 // Section 7
 // Vectors
 
