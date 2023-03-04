@@ -6,8 +6,8 @@
 
 using namespace std;
 
-void pass_by_value1(int num);
-void pass_by_value2(string s);
+void pass_by_value1(int num);      // this function doesn't return anything but takes num as input
+void pass_by_value2(string s);    //doesn't retuir
 void pass_by_value3(vector<string> v);
 void print_vector(vector<string> v);
 
