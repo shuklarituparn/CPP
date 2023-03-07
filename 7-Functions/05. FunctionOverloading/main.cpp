@@ -6,14 +6,22 @@
 
 using namespace std;
 
-void print(int);
+/*
+Function overloading means declaring the same function again and again but with a different argument or parameters passsed to it.
+
+The name of the function stays the same 
+
+here we declare the function print with different arguments.
+*/
+
+void print(int);   
 void print(double);
 void print(string);
 void print(string, string);
 void print(vector<string>);
 
 void print(int num) {
-    cout << "Printing int: " << num << endl;
+    cout << "Printing int: " << num << endl;  
 }
 
 void print(double num) {

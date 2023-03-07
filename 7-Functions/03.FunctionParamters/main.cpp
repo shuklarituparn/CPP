@@ -7,9 +7,9 @@
 using namespace std;
 
 void pass_by_value1(int num);      // this function doesn't return anything but takes num as input
-void pass_by_value2(string s);    //doesn't retuir
-void pass_by_value3(vector<string> v);
-void print_vector(vector<string> v);
+void pass_by_value2(string s);    //doesn't returns a value but takes string as the parameter
+void pass_by_value3(vector<string> v); //doesn't return anything but takes vector as the input
+void print_vector(vector<string> v);  //doesn't gives any output but returns vector as the input
 
 void pass_by_value1(int num) {
     num = 1000;
@@ -24,8 +24,8 @@ void pass_by_value3(vector<string> v) {
 }
 
 void print_vector(vector<string> v) {
-    for (auto s: v) 
-        cout << s << " ";
+    for (auto s: v)                     //looping on the vector value 
+        cout << s << " ";      //printing the value one by one
     cout << endl;
 }
 

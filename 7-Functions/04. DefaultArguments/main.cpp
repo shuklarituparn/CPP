@@ -6,15 +6,15 @@
 
 using namespace std;
 
-double calc_cost(double base_cost = 100.0, double tax_rate = 0.06, double shipping = 3.50);
+double calc_cost(double base_cost = 100.0, double tax_rate = 0.06, double shipping = 3.50); //function that returns the double value and has default value
 
-void greeting(string name,  string prefix = "Mr.", string suffix = "");
+void greeting(string name,  string prefix = "Mr.", string suffix = ""); //doesn't return anything but has a default value of the string
 
-double calc_cost(double base_cost, double tax_rate, double shipping) {
+double calc_cost(double base_cost, double tax_rate, double shipping) {  //in the actual function we don't have the default values. we had it in prototype
     return base_cost += (base_cost * tax_rate) + shipping;
 }
 
-void greeting(string name,  string prefix, string suffix) {
+void greeting(string name,  string prefix, string suffix) {  //in the actual function we don't have the default values of the string
     cout << "Hello " << prefix + " " + name + " " + suffix << endl;
 }
 
@@ -38,7 +38,7 @@ int main() {
     greeting("Glenn Jones", "Dr.", "M.D.");
     greeting("James Rogers", "Professor", "Ph.D.");
     greeting("Frank Miller", "Dr.");
-    greeting("William Smith");
+    greeting("William Smith");   //as it's not passed with extra parameters the default one will be used the one in the function prototype
     greeting("Mary Howard", "Mrs.", "Ph.D.");
 
     cout << endl;
