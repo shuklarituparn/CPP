@@ -2,10 +2,10 @@
 #define _PLAYER_H_
 #include <string>
 
-class Player
+class Player       //Defining  a player class in .h file
 {
 private:
-   static int num_players;
+   static int num_players; //declaring a static class member to display active player
    std::string name;
    int health;
    int xp;
@@ -19,7 +19,7 @@ public:
     // Destructor
     ~Player();
     
-    static int get_num_players();
+    static int get_num_players(); //static class function. Has only access to static object
     
 };
 

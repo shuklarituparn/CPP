@@ -1,0 +1,37 @@
+Cpp also supports structs.
+
+*In structs the member are public by default while in the class the member are private by default.
+
+
+class Person{
+
+std::string name;
+std::String get_name();
+};
+
+Person p;
+p.name="Frank";  //error-private
+std::cout<<p.get_name(); //error-Private
+
+
+Struct Person{
+std::string name;
+std::String get_name();
+};
+
+Person p;
+p.name="Frank";  //no-error
+std::cout<<p.get_name();
+
+Structs:
+
+Use structs with passive object with public access
+
+*Don't declare methods in structs
+
+
+Class:
+
+*Use class for active objects with private access
+*Implement getters and setters as needed
+*Implement member methods as needed
