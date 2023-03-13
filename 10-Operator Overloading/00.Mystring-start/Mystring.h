@@ -7,12 +7,12 @@ private:
     char *str;      // pointer to a char[] that holds a C-style string
 public:
     Mystring();                                            // No-args contstructor
-    Mystring(const char *s);                         // Overloaded contstructor              
+    Mystring(const char *s);                         // Overloaded contstructor -expects c style literal
     Mystring(const Mystring &source);        // Copy constructor
     ~Mystring();                                          // Destructor
-    void display() const;
-    int get_length() const;                           // getters
-    const char *get_str() const;
+    void display() const; //display methods that display the strings
+    int get_length() const;                           // getters- returns current length of the string
+    const char *get_str() const;   //returns the pointer to the string
   
 };
 
