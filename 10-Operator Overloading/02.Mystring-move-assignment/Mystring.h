@@ -22,3 +22,5 @@ public:
 };
 
 #endif // _MYSTRING_H_
+
+//In the private area we have the type and in Public the operations with it

@@ -10,6 +10,7 @@ Mystring::Mystring()
 }
 
 // Overloaded constructor
+//Overloading a constructor means using the same name to do many functions
 Mystring::Mystring(const char *s) 
     : str {nullptr} {
         if (s==nullptr) {
@@ -31,9 +32,10 @@ Mystring::Mystring(const Mystring &source)
 }
 
 // Move constructor
+//Constructor not an assigment that means it makes a new object based on rvalue reference
 Mystring::Mystring( Mystring &&source) 
-    :str(source.str) {
-        source.str = nullptr;
+    :str(source.str) { //taking source str pointer and moving it to str
+        source.str = nullptr; //nullifying the source string pointer
         std::cout << "Move constructor used" << std::endl;
 }
 
@@ -60,14 +62,15 @@ Mystring &Mystring::operator=(const Mystring &rhs) {
 }
 
 // Move assignment
+//no const as we wanna modify the right hand attribute
 Mystring &Mystring::operator=(Mystring &&rhs) {
     std::cout << "Using move assignment" << std::endl;
-    if (this == &rhs) 
-        return *this;
-    delete [] str;
-    str = rhs.str;
-    rhs.str = nullptr;
-    return *this;
+    if (this == &rhs) //checking the self-assignment
+        return *this;  //return if same
+    delete [] str;  //delete the str from the current object
+    str = rhs.str; //store the pointer of rhs to the lhs
+    rhs.str = nullptr; //nullify the rhs pointer
+    return *this;     //returning the pointer
     
 }
 
@@ -86,3 +89,29 @@ void Mystring::display() const {
 
 
 
+#ifndef _MYSTRING_H_
+#define _MYSTRING_H_
+
+class Mystring
+{
+private:
+    char *str;      // pointer to a char[] that holds a C-style string
+public:
+    Mystring();                                                         // No-args constructor
+    Mystring(const char *s);                                     // Overloaded constructor
+    Mystring(const Mystring &source);                    // Copy constructor
+    Mystring( Mystring &&source);                         // Move constructor
+    ~Mystring();                                                     // Destructor
+    
+    Mystring &operator=(const Mystring &rhs); // Copy assignment
+    Mystring &operator=(Mystring &&rhs);        // Move assignment
+    
+    void display() const;
+    
+    int get_length() const;                                       // getters
+    const char *get_str() const;
+};
+
+#endif // _MYSTRING_H_
+
+//In the private area we have the type and in Public the operations with it
