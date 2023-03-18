@@ -4,7 +4,7 @@
 class Mystring
 {
     friend std::ostream &operator<<(std::ostream &os, const Mystring &rhs);
-    friend std::istream &operator>>(std::istream &in, Mystring &rhs);
+    friend std::istream &operator>>(std::istream &in, Mystring &rhs); //not const as we're modyfying
 
 private:
     char *str;      // pointer to a char[] that holds a C-style string
