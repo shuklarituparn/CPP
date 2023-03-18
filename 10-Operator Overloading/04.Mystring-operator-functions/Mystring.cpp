@@ -98,7 +98,7 @@ Mystring operator-(const Mystring &obj) {
 }
 
 // Concatenation
-Mystring operator+(const Mystring &lhs, const Mystring &rhs) {
+Mystring operator+(const Mystring &lhs, const Mystring &rhs) { //we don't have this pointer so lhs and rhs
     char *buff = new char[std::strlen(lhs.str) + std::strlen(rhs.str) + 1];
     std::strcpy(buff, lhs.str); //copying the lhs string to buff
     std::strcat(buff, rhs.str);  //concatenating the rhs string to buff

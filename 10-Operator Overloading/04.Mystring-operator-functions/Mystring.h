@@ -10,17 +10,17 @@ private:
 public:
     Mystring();
     Mystring(const char *s); //overloading constructor
-    Mystring(const Mystring &source);
-    Mystring( Mystring &&source);
-    ~Mystring();
+    Mystring(const Mystring &source); //copy constructor (As it has only lhs reference)
+    Mystring( Mystring &&source); //Move constructor as it has only rhs reference
+    ~Mystring(); //destructor
     
-    Mystring &operator=(const Mystring &rhs);
-    Mystring &operator=(Mystring &&rhs);
+    Mystring &operator=(const Mystring &rhs); //copy assignment
+    Mystring &operator=(Mystring &&rhs); //move assignment
    
-    void display() const;
-
-    int get_length() const;
-    const char *get_str() const;
+    void display() const; //getter that displays the string
+ 
+    int get_length() const; //getter returning the string size
+    const char *get_str() const;  //getter to return the string
 };
 
 #endif // _MYSTRING_H_
