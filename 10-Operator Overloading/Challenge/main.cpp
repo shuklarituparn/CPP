@@ -1,105 +1,79 @@
 // Section 14
-// Challenge
+// Overloading operators as member methods
 #include <iostream>
-#include<cstring>
-#include "Mystring.h"
+#include <cstring>
+#include <cctype>
 
 using namespace std;
 
-class Mystring
-{
+class Mystring{
+private:
+    char *str;      // pointer to a char[] that hold a C-style string
     friend std::ostream &operator<<(std::ostream &os, const Mystring &rhs);
     friend std::istream &operator>>(std::istream &in, Mystring &rhs);
-
-private:
-    char *str;      // pointer to a char[] that holds a C-style string
 public:
-    Mystring();                                                         // No-args constructor
-    Mystring(const char *s);                                     // Overloaded constructor
-    Mystring(const Mystring &source);                    // Copy constructor
-    Mystring( Mystring &&source);                         // Move constructor
-    ~Mystring();                                                     // Destructor
+    Mystring();                                                          // No-args constructor
+    Mystring(const char *s);                                      // Overloaded constructor
+    Mystring(const Mystring &source);                     // Copy constructor
+    Mystring( Mystring &&source);                          // Move constructiror
+    ~Mystring();                                                      // Destructor
     
-    Mystring &operator=(const Mystring &rhs);     // Copy assignment
-    Mystring &operator=(Mystring &&rhs);           // Move assignment
+    Mystring &operator=(const Mystring &rhs);    // Copy assignment
+    Mystring &operator=(Mystring &&rhs);          // Move assignment
 
-    Mystring &operator -(const Mystring &rhs);
-    bool operator==(const Mystring &rhs)const;
-    bool operator!=(const Mystring &rhs)const;
+    Mystring operator-() const;                             // make lowercase
+    Mystring operator+(const Mystring &rhs) const;        // concatenate
+    bool operator==(const Mystring &rhs) const; //const method as don't wanna change anything
+    
     bool operator<(const Mystring &rhs)const;
     bool operator>(const Mystring &rhs)const;
 
-    Mystring &operator +(const Mystring &rhs);
     Mystring &operator +=(const Mystring &rhs);
-    Mystring &operator *(const Mystring &rhs);
-    Mystring &operator +=(const Mystring &rhs);
-
-   
-    
+    Mystring operator*(int n) const; 
     void display() const;
-    
-    int get_length() const;                                      // getters
+
+    int get_length() const;                                        // getters
     const char *get_str() const;
 };
 
 int main() {
-    
-  /* 
     cout << boolalpha << endl;
-    Mystring a {"frank"};
-    Mystring b {"frank"};
+    
+    Mystring larry{"Larry"}; 
+    Mystring moe{"Moe"};
+    Mystring jenny{"Jenny"};
+    Mystring lamb{"lamb"};
+    larry+=jenny;
+    Mystring S2 {"12345"};
+    
+    lamb=S2*4;
+    cout<<S2<<endl;
 
-    cout << (a==b) << endl;         // true
-    cout << (a!=b) << endl;          // false
-    
-    b = "george";
-    cout << (a==b) << endl;         // false
-    //cout << (a!=b) << endl;          // true
-    //cout << (a<b) << endl;          // true
-    //cout << (a>b) << endl;           // false
-    
-    Mystring s1 {"FRANK"};
-    s1 = -s1;       
-    cout << s1 << endl;               // frank              
+    lamb.display();
 
-    //s1 = s1 + "*****";
-    //cout << s1 << endl;               // frank*****       
+    Mystring stooge = larry;
+
+    larry.display();                                                                      // Larry
+    moe.display();                                                                      // Moe
     
-    //s1 += "-----";                        // frank*****-----
-    //cout << s1 << endl;
+    cout << (larry == moe) << endl;                                         // false
+    cout << (larry == stooge) << endl;                                      // true
+    cout << (larry<moe) << endl;             //true
+    cout << (larry>moe) << endl;       //false
+    larry.display();                                                                    // Larry
+    Mystring larry2 = -larry;
+    larry2.display();                                                                    // larry
+     
+    Mystring stooges = larry + "Moe";                                     // ok with member function
+    //Mystring stooges = "Larry" + moe;                                 // Compiler error
     
-    //Mystring s2{"12345"};
-    //s1 = s2 * 3;
-    //cout << s1 << endl;              // 123451234512345
+    Mystring two_stooges = moe + " " + "Larry";
+    two_stooges.display();      
+                                                   // Moe Larry
+    Mystring three_stooges = moe + " " + larry + " " +  "Curly";
+    three_stooges.display();                                                        //  Moe Larry Curly
     
-    //Mystring s3{"abcdef"};  
-    //s3 *= 5;
-    //cout << s3 << endl;             // abcdefabcdefabcdefabcdefabcdef
-    
-    //Mystring s = "Frank";
-    //++s;
-    //cout << s << endl;                  // FRANK
-    
-    //s = -s; 
-    //cout << s << endl;                  // frank
-    
-    //Mystring result;
-    //result = ++s;                           
-    //cout << s << endl;                  // FRANK
-    //cout << result << endl;           // FRANK
-    
-    //s = "Frank";
-    //s++;
-    //cout << s << endl;                  // FRANK
-    
-    s = -s;
-    cout << s << endl;                  // frank
-    //result = s++;
-    //cout << s << endl;                  // FRANK
-    //cout << result << endl;           // frank
-    */
-    
-return 0;
+    return 0;
 }
 
 // No-args constructor
@@ -116,47 +90,46 @@ Mystring::Mystring(const char *s)
             str = new char[1];
             *str = '\0';
         } else {
-            str = new char[strlen(s)+1];
-            strcpy(str, s);
+            str = new char[std::strlen(s)+1];
+            std::strcpy(str, s);
         }
 }
 
 // Copy constructor
 Mystring::Mystring(const Mystring &source) 
     : str{nullptr} {
-        str = new char[strlen(source.str)+ 1];
-        strcpy(str, source.str);
- //       std::cout << "Copy constructor used" << std::endl;
-
+        str = new char[std::strlen(source.str)+ 1];
+        std::strcpy(str, source.str);
+        std::cout << "Copy constructor used" << std::endl;
 }
 
 // Move constructor
 Mystring::Mystring( Mystring &&source) 
     :str(source.str) {
         source.str = nullptr;
-//        std::cout << "Move constructor used" << std::endl;
+        std::cout << "Move constructor used" << std::endl;
 }
 
- // Destructor
+// Destructor
 Mystring::~Mystring() {
     delete [] str;
 }
 
- // Copy assignment
+// Copy assignment operator
 Mystring &Mystring::operator=(const Mystring &rhs) {
-//    std::cout << "Using copy assignment" << std::endl;
+    std::cout << "Using copy assignment" << std::endl;
 
     if (this == &rhs) 
         return *this;
     delete [] str;
-    str = new char[strlen(rhs.str) + 1];
-    strcpy(str, rhs.str);
+    str = new char[std::strlen(rhs.str) + 1];
+    std::strcpy(str, rhs.str);
     return *this;
 }
 
-// Move assignment
-Mystring &Mystring::operator=( Mystring &&rhs) {
- //   std::cout << "Using move assignment" << std::endl;
+// Move assignment operator
+Mystring &Mystring::operator =( Mystring &&rhs) {
+    std::cout << "Using move assignment" << std::endl;
     if (this == &rhs) 
         return *this;
     delete [] str;
@@ -165,14 +138,73 @@ Mystring &Mystring::operator=( Mystring &&rhs) {
     return *this;
 }
 
-// Display method
-void Mystring::display() const{
-    std::cout << str << " : " << get_length() << std::endl;
+bool Mystring::operator<(const Mystring &rhs)const{
+
+if (std::strcmp(str,rhs.str)<0)
+{
+    return true;
+}
+else 
+    return false;
+
+
+
+}
+bool Mystring::operator>(const Mystring &rhs)const{
+
+if (std::strcmp(str,rhs.str)>0)
+{
+    return true;
+}
+else
+    return false;
 }
 
- // getters
- int Mystring::get_length() const { return strlen(str); }
- const char *Mystring::get_str() const { return str; }
+Mystring & Mystring::operator +=(const Mystring &rhs){
+
+std::strcat(str, rhs.str);
+return *this;
+
+}
+
+Mystring Mystring::operator*(int n) const{
+
+    Mystring temp;
+
+    for (size_t i = 1; i <= n; i++)
+    {
+        temp= temp+ *this;
+    }
+    return temp;
+
+}
+
+
+// Equality
+bool Mystring::operator==(const Mystring &rhs) const {
+    return (std::strcmp(str, rhs.str) == 0);
+}
+
+// Make lowercase
+Mystring Mystring::operator-() const {//expect no parameters and is const
+    char *buff= new char[std::strlen(str) + 1];//area on memory to store the lowercase 
+    std::strcpy(buff, str);//copy the string
+    for (size_t i=0; i<std::strlen(buff); i++)//looping through the buffer (buff-copy of the usr given string)
+        buff[i] = std::tolower(buff[i]);//converting buffer to lower case
+    Mystring temp {buff};//return temporary Mystring object using this buffer
+    delete [] buff;//deleting buffer to not leake memory
+    return temp;//return the object temp
+}
+
+// Concatentate
+Mystring Mystring::operator+(const Mystring &rhs) const {
+    char *buff = new char[std::strlen(str) + std::strlen(rhs.str) + 1];
+    std::strcpy(buff, str);
+    std::strcat(buff, rhs.str);
+    Mystring temp {buff};
+    delete [] buff;
+    return temp;
+}
 
 // overloaded insertion operator
 std::ostream &operator<<(std::ostream &os, const Mystring &rhs) {
@@ -190,69 +222,30 @@ std::istream &operator>>(std::istream &in, Mystring &rhs) {
 }
 
 
-Mystring& Mystring::operator-(const Mystring &rhs){
-
-    char *buff = new char[std::strlen(rhs.str) + 1];
-    strcpy(buff,rhs.str);
-    for (size_t i = 0; i < strlen(buff); i++)
-    {
-        buff[i]= std::tolower(buff[i]);
-    }
-    Mystring temp{buff};
-    delete []buff;
-    return temp;
+// Display method
+void Mystring::display() const {
+    std::cout << str << " : " << get_length() << std::endl;
 }
 
-bool Mystring::operator==(const Mystring &rhs)const{
-    if (*this==rhs.str)
-    {
-       return true;
-    }
-    else
-       return false;
-    
-
-}
-bool Mystring::operator!=(const Mystring &rhs)const{
-
-    if (*this==rhs.str)
-    {
-       return false;
-    }
-    else
-       return true;
-
-}
-
-bool Mystring::operator<(const Mystring &rhs)const{
+// length getter
+ int Mystring::get_length() const { return std::strlen(str); }
+ 
+ // string getter
+ const char *Mystring::get_str() const { return str; }
 
 
 
-}
 
-bool Mystring::operator>(const Mystring &rhs)const{
+/*
 
+Unary operators as the member methods
 
+Unary operators work with one operand
 
-}
+++, --, -, !
 
-Mystring & Mystring::operator +(const Mystring &rhs){
+*****************************SYNTAX********************************
 
+ReturnType Type::operatorOp();
+*/
 
-
-}
-Mystring & Mystring::operator+=(const Mystring &rhs){
-
-
-
-}
-Mystring & Mystring::operator *(const Mystring &rhs){
-
-
-
-}
-Mystring & Mystring::operator +=(const Mystring &rhs){
-
-
-
-}
