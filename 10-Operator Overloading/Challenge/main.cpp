@@ -29,7 +29,9 @@ public:
     bool operator>(const Mystring &rhs)const;
 
     Mystring &operator +=(const Mystring &rhs);
-    Mystring operator*(int n) const; 
+    Mystring operator*(int n) const;   //const as we are not modifying the output
+    Mystring& operator*=(int n);  //overloading the *= operator
+    
     void display() const;
 
     int get_length() const;                                        // getters
@@ -37,7 +39,7 @@ public:
 };
 
 int main() {
-    cout << boolalpha << endl;
+    cout << boolalpha << endl; //to print true and false instead of 1 and 0
     
     Mystring larry{"Larry"}; 
     Mystring moe{"Moe"};
@@ -45,9 +47,13 @@ int main() {
     Mystring lamb{"lamb"};
     larry+=jenny;
     Mystring S2 {"12345"};
+    Mystring S1 {"abc"};
+
+    S1*=4;
     
     lamb=S2*4;
     cout<<S2<<endl;
+    cout<<S1<<endl;
 
     lamb.display();
 
@@ -221,6 +227,13 @@ std::istream &operator>>(std::istream &in, Mystring &rhs) {
     return in;
 }
 
+Mystring& Mystring::operator*=(int n){
+     for (size_t i = 1; i <=n; i++)
+     {
+        *this = *this*n;
+     }
+    return *this;
+}
 
 // Display method
 void Mystring::display() const {
