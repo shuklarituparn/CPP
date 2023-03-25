@@ -1,23 +1,18 @@
 #include<iostream>
-#include <string>
-#include <vector>
 
-int main(){
+int main()
+{
+unsigned long long int b {0};
+   uint64_t a {0};
+   std::cin>>a;
+   while (a!=0)
+{
+    b=b*10+a%10;
+    a=a/10;
 
-std::string userInput;
-std::cin>>userInput;
 
-for(int i{0}; i<userInput.length()-1; i++){
-
-    
-    for(int j{1}; j<userInput.length(); j++){
-        
-        if(userInput[i]==userInput[j])
-            std::cout<<userInput[j];
-    }
 }
-
-
-
-
+std::cout<< b;
+    
+	return 0;
 }

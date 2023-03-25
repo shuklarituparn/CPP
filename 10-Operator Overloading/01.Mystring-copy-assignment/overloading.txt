@@ -1,0 +1,13 @@
+How to overload an operator
+
+The assignment operator must be overloaded as a member function and by using the syntax
+
+TYPE &TYPE::OPERATOR==(const Type &rhs);
+
+
+//name of the method is operator equal. The keyword operator followed by the operator that we wish to overload
+
+
+we write s1=s2 but it returns
+
+s2.operator=(s1);

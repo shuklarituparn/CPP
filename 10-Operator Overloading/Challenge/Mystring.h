@@ -17,6 +17,8 @@ public:
     
     Mystring &operator=(const Mystring &rhs);     // Copy assignment
     Mystring &operator=(Mystring &&rhs);           // Move assignment
+
+    Mystring &operator -(Mystring )
     
     void display() const;
     

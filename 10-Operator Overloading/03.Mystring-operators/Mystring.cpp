@@ -71,14 +71,14 @@ bool Mystring::operator==(const Mystring &rhs) const {
 }
 
 // Make lowercase
-Mystring Mystring::operator-() const {
-    char *buff= new char[std::strlen(str) + 1];
-    std::strcpy(buff, str);
-    for (size_t i=0; i<std::strlen(buff); i++)
-        buff[i] = std::tolower(buff[i]);
-    Mystring temp {buff};
-    delete [] buff;
-    return temp;
+Mystring Mystring::operator-() const {//expect no parameters and is const
+    char *buff= new char[std::strlen(str) + 1];//area on memory to store the lowercase 
+    std::strcpy(buff, str);//copy the string
+    for (size_t i=0; i<std::strlen(buff); i++)//looping through the buffer (buff-copy of the usr given string)
+        buff[i] = std::tolower(buff[i]);//converting buffer to lower case
+    Mystring temp {buff};//return temporary Mystring object using this buffer
+    delete [] buff;//deleting buffer to not leake memory
+    return temp;//return the object temp
 }
 
 // Concatentate

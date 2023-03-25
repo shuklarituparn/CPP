@@ -90,3 +90,5 @@ std::istream &operator>>(std::istream &in, Mystring &rhs) {
     return in;
 }
 
+
+
