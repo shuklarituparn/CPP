@@ -72,7 +72,7 @@ int main() {
     
     Account *p_acc {nullptr};   //creating an object of type pointer of class Account 
     p_acc = new Account();    //Creating a space on the memory
-    p_acc->deposit(1000.0);  
+    p_acc->deposit(1000.0);    //assigning value 1000
 
     /*
 (pointer_name)->(variable_name)
@@ -84,12 +84,12 @@ The Dot(.) operator is used to normally access members of a structure or union.
 The Arrow(->) operator exists to access the members of the structure or the unions using pointers.
     */
     p_acc->withdraw(500.0);
-    delete p_acc;
+    delete p_acc;  //deleting the pointer after using it
 
 // Use the Savings Account class
     
     cout << "\n=== Savings Account ==========================" << endl;
-    Savings_Account sav_acc {};
+    Savings_Account sav_acc {}; //creating an object of saving account class
     sav_acc.deposit(2000.0);               
     sav_acc.withdraw(500.0);
     
@@ -97,7 +97,7 @@ The Arrow(->) operator exists to access the members of the structure or the unio
     
     Savings_Account *p_sav_acc {nullptr};
     p_sav_acc = new Savings_Account();
-    p_sav_acc->deposit(1000.0);
+    p_sav_acc->deposit(1000.0); //assigning the value of 100 to the pointer 
     p_sav_acc->withdraw(500.0);
     delete p_sav_acc;
 
