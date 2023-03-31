@@ -34,6 +34,8 @@ int main() {
         }
     }
 
+    Node* curr=NULL;
+
     cout << "\nThe linked list is: ";
     Node* ptr = head;
     while (ptr != NULL) {

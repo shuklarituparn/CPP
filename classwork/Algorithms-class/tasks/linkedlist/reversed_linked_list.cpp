@@ -9,15 +9,12 @@ struct Node {
 
 int main() {
     int n;
-    cout << "Enter the number of elements: ";
     cin >> n;
 
     Node* head = NULL;  //Initializing it as NUll to not create any garbage
     Node* tail = NULL;
-
     for (int i = 0; i < n; i++) {
         int num;
-        cout << "Enter element " << i+1 << ": ";
         cin >> num;
 
         Node* new_node = new Node;  //creating a new struct called node and saving its ptr
@@ -35,13 +32,26 @@ int main() {
 
     //From this point onwards in our program we have the linked list
 
-///*
-    cout << "\nThe linked list is: ";
-    Node* ptr = tail;
-    while (ptr != head) {
-        cout << ptr->data << " ";
-        ptr = ptr->next;
-    }
-//*/
-    return 0;
+Node* prev= NULL;
+Node*forward= NULL;
+Node*curr =head;
+
+//cout << "\nThe reversed linked list is: ";
+
+while (curr!=NULL)
+{
+forward=curr->next;
+curr->next=prev;
+prev=curr;
+curr=forward;
+}
+
+Node*ptr= tail;
+
+while (ptr!= NULL)
+{
+    cout << ptr->data;
+    ptr = ptr->next;
+}
+return 0;
 }
