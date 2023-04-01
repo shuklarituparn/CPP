@@ -4,7 +4,7 @@
 using namespace std;
 
 struct Node {
-    int data;
+    char data;
     Node* next;
 };
 
@@ -17,7 +17,7 @@ int main() {
     Node* temp = NULL;
 
     for (int i = 0; i < n; i++) {
-        int num;
+        char num;
         cout << "Enter element " << i+1 << ": ";
         cin >> num;
 
