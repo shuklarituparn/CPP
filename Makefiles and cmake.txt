@@ -16,6 +16,10 @@ Most people make a build folder and they make the cmake there.
 
 better to use /out/build
 
+to make that directory we can write
+
+"mkdir -p /out/build"
+
 make that directory and then go into it and make a new file called 
 
 "CMakeLists.txt" then open the terminal and type
