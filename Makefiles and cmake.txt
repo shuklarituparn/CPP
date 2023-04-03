@@ -30,3 +30,13 @@ cmake -S ../../ -B .
 the dot specifies that this folder where we are now is the place to make the makefiles
 
 ../../ is the command to specify that the source code is two folder back.
+
+or if we are in the directory where our code is and we want to build the code in the different directory.
+
+cmake -S . -B out/build/
+
+in the CMakeLists.txt we can specify simple things like minimum version required.
+
+like:-
+
+cmake_minimum_required(VERSION 3.26.2)
