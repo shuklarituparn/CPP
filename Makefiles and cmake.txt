@@ -1,0 +1,25 @@
+Make files are basically make files that have the various instruction on how to make  a program
+
+/*They generally start with something like:
+
+Default:
+    g++ main.cpp -o.out
+
+*/
+
+
+We can do the same things with cmake:
+
+we need to specify the source folder and the build folder and in the build folder we'll have the make files.
+
+Most people make a build folder and they make the cmake there.
+
+better to use /out/build
+
+make that directory and then go into it and type 
+
+cmake -S ../../ -B .
+
+the dot specifies that this folder where we are now is the place to make the makefiles
+
+../../ is the command to specify that the source code is two folder back.

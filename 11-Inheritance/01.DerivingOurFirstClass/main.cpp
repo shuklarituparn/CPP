@@ -9,9 +9,9 @@ using namespace std;
 class Account
 {
 public:
-    double balance;     
-    std::string name;             
-    void deposit(double amount);     
+    double balance;        //balance
+    std::string name;       //class attributes       
+    void deposit(double amount);     //function to show that the deposit amount
     void withdraw(double amount);
     Account();          //constructor
     ~Account();  //destructor
