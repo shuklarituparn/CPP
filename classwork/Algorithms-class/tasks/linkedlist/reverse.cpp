@@ -18,6 +18,41 @@ class List{
     Node* get_head() { return head; }
 };
 
+class reversed_linked_list{
+    private:
+    Node *head;
+    public:
+    reversed_linked_list(List list);
+    void display_linked_list(Node *head);
+    Node* get_head(){return head;}
+
+
+};
+void reversed_linked_list::display_linked_list(Node *head){
+    Node*ptr= head;
+    while (ptr!=nullptr){
+        std::cout<<ptr->data;
+        ptr=ptr->next;
+    }
+}
+
+reversed_linked_list::reversed_linked_list(List list){
+    Node* current= list.get_head();
+    Node *forward= nullptr;
+    Node* previous=nullptr;
+    while (current!=nullptr)
+    {
+        forward=current->next;
+        current->next=previous;
+        previous=current;
+        current=forward;
+    }
+    head=previous;
+
+    
+}
+
+
 void List::display_linked_list(Node *head){
     Node*ptr= head;
     while (ptr!=nullptr){
@@ -44,26 +79,16 @@ List::List(std::string str){
     }
 }
 
-Node* List::reverse_linked_list(Node *head){
-    Node *forward= nullptr;
-    Node*prev=nullptr;
-    Node *curr= head;
-    while (curr!=NULL){
-        forward=curr->next;
-        curr->next=prev;
-        prev=curr;
-        curr=forward;
-    }
-    return prev;
-}
-
 int main(){
     std::string str;
     std::getline(std::cin, str);
     List myList{str}; 
     //myList.display_linked_list(myList.get_head()); 
-    Node* reversed_head = myList.reverse_linked_list(myList.get_head());
-    myList.display_linked_list(reversed_head);
+    //Node* reversed_head = myList.reverse_linked_list(myList.get_head());
+    reversed_linked_list reversedList {myList};
+    reversedList.display_linked_list(reversedList.get_head());
+
+
 
     return 0;
 }
