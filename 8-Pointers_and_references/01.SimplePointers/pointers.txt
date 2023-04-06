@@ -1,0 +1,60 @@
+Advanced Pointer Notation
+
+Consider pointer notation for the two-dimensional numeric arrays. consider the following declaration
+
+int nums[2][3]  =  { { 16, 18, 20 }, { 25, 26, 27 } };
+
+In general, nums[ i ][ j ] is equivalent to *(*(nums+i)+j) 
+
+*(*nums)            nums[0][0]   16
+*(*nums +1)         nums[0][1]   18
+*(*nums +2)         nums[0][2]   20 
+*(*(nums +1)+ 0)    nums[1][0]   25   
+*(*(nums +1)+ 1)    nums[1][1]   26
+*(*(nums +1)+ 2)    nums[1][2]   27
+
+
+Pointers and String literals
+
+String literals are arrays containing null-terminated character sequences.
+String literals are arrays of type character plus terminating null-character, 
+with each of the elements being of type const char 
+(as characters of string can’t be modified).
+
+char x = *(ptr+3); Here, both x and y contain k stored at 1803 (1800+3).
+char y = ptr[3];
+
+'g' =1800 sample of Address allocation in an array
+'e' =1801
+'e' =1802
+'k' =1803
+'s' =1804
+
+Pointers to pointers
+
+In C++, we can create a pointer to a pointer that in turn may point to data 
+or another pointer. The syntax simply requires the unary operator (*) for each 
+level of indirection while declaring the pointer.
+
+char a;
+char *b;
+char ** c;
+a = ’g’;
+b = &a;
+c = &b;
+
+Here b points to a char that stores ‘g’ and c points to the pointer b.
+
+Invalid pointers
+
+A pointer should point to a valid address but not necessarily to valid elements 
+(like for arrays). These are called invalid pointers. Uninitialized pointers 
+are also invalid pointers.
+
+int *ptr1;
+int arr[10];
+int *ptr2 = arr+20;
+
+Here, ptr1 is uninitialized so it becomes an invalid pointer and ptr2 
+is out of bounds of arr so it also becomes an invalid pointer. 
+(Note: invalid pointers do not necessarily raise compile errors)
