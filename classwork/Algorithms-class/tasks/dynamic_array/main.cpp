@@ -69,7 +69,7 @@ Vector::Vector() {
 void Vector::Push(int input) {
   if (capacity_ == size_) {
 
-    Resize(capacity_ * 2); 
+    Resize(capacity_ * 2);
     data_[size_++] = input;
 
   } else {
@@ -78,7 +78,6 @@ void Vector::Push(int input) {
   }
 }
 void Vector::Pop() {
-
   int removed = data_[size_ - 1];
   size_--;
   if (size_ <= capacity_ / 2 && capacity_ > 1) {
