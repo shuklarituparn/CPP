@@ -1,27 +1,22 @@
-//
-// Created by rituparn on 07.04.23.
-//
-
-
 #include <iostream>
 class vector {
 
 private:
-  int *data;
-  int capacity;
-  int size;
+  int *data_;
+  int capacity_;
+  int size_;
 
 public:
   vector();
-  void push(int input);
-  void pop();
-  void at(int index);
-  void resize(int NewCapacity);
-  int size_() const {return size;}
-  int capacity_() const{return capacity;}
-  //int get_capacity(){return capacity;}
-  void clear();
-  void exit();
+  ~vector();
+  void push_(int input);
+  void pop_();
+  void at_(int index);
+  void resize_(int NewCapacity);
+  int get_size_() const { return size_; }
+  int get_capacity_() const { return capacity_; }
+  void clear_();
+  void exit_();
 };
 
 int main() {
@@ -29,59 +24,98 @@ int main() {
   std::string input;
   while (std::cin >> input) {
     if (input == "push") {
-     int value;
-     std::cin >> value;
-     Vector.push(value);
-    
-    } 
-    else if (input == "pop") {
-      Vector.pop();
+      int value;
+      std::cin >> value;
+      Vector.push_(value);
+
+    } else if (input == "pop") {
+      Vector.pop_();
     } else if (input == "at") {
       int index;
       std::cin >> index;
-      Vector.at(index);
-    } 
-    else if (input == "resize") {
+      Vector.at_(index);
+    } else if (input == "resize") {
       int newCapacity;
       std::cin >> newCapacity;
-      Vector.resize(newCapacity);
+      Vector.resize_(newCapacity);
     } else if (input == "size") {
-      std::cout<<Vector.size_()<<std::endl;
+      std::cout << Vector.get_size_() << std::endl;
     } else if (input == "capacity") {
-      std::cout<<Vector.capacity_()<<std::endl;
+      std::cout << Vector.get_capacity_() << std::endl;
     } else if (input == "clear") {
-      Vector.clear();
+      Vector.clear_();
     } else if (input == "exit") {
-      std::cout<<"bye"<<std::endl;
+      std::cout << "bye" << std::endl;
       break;
     }
   }
   return 0;
 }
 
-vector::vector(){
-    capacity=1;
-    size=0;
-    data= new int[capacity];
-
+vector::vector() {
+  capacity_ = 1;
+  size_ = 0;
+  data_ = new int[capacity_];
 }
-void vector::push(int input){
-    if (capacity==size) {
+void vector::push_(int input) {
+  if (capacity_ == size_) {
 
-      capacity=capacity*2;
-      data[size++]=input;
-      std::cout<<"ok"<<std::endl;  
+    capacity_ = capacity_ * 2;
+    data_[size_++] = input;
+    std::cout << "ok" << std::endl;
 
-
-    }
-    else {
-      data[size]= input;
-      size++;
-      std::cout<<"ok"<<std::endl;  
-        //std::cout<<"error: Increase capacity";
-    }
+  } else {
+    data_[size_] = input;
+    size_++;
+    std::cout << "ok" << std::endl;
+    // std::cout<<"error: Increase capacity";
+  }
 }
-void vector::pop(){}
-void vector::at(int index){}
-void vector::resize(int NewCapacity){}
-void vector::clear(){}
+void vector::pop_() {
+  if (size_ == 0) {
+    std::cout << "error" << std::endl;
+    return;
+  }
+  std::cout << data_[--size_] << std::endl;
+  if (size_ <= capacity_/2) {
+    int new_capacity = capacity_/2;
+    int *new_data = new int[new_capacity];
+    for (int i = 0; i < size_; i++) {
+      new_data[i] = data_[i];
+    }
+    delete[] data_;
+    data_ = new_data;
+    capacity_ = new_capacity;
+}
+}
+void vector::at_(int index) {
+  if (index < 0 || index >= size_) {
+    std::cout << "error" << std::endl;
+  } else {
+    std::cout << data_[index] << std::endl;
+  }
+}
+void vector::resize_(int newCapacity) {
+  int *newData = new int[newCapacity];
+
+  int newSize = (size_< newCapacity) ? size_ : newCapacity;
+  for (int i = 0; i < newSize; i++) {
+    newData[i] = data_[i];
+  }
+
+  delete[] data_;
+  data_ = newData;
+  capacity_ = newCapacity;
+  size_ = newSize;
+
+  std::cout << "ok" << std::endl;
+}
+void vector::clear_() {
+  delete[] data_;
+  size_ = 0;
+  capacity_ = 1;
+  data_ = new int[capacity_];
+  std::cout << "ok" << std::endl;
+}
+
+vector::~vector() { delete[] data_; }
