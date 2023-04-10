@@ -33,10 +33,27 @@ public:
 };
 
 int main() {
-  //   Base b;
-  //    Base b{100};
-  //   Derived d;
-  Derived d{1000};
+    Base b;
+ //Base b{100};
+  Derived d;
+  //Derived d{1000}; //here we a
 
   return 0;
 }
+
+/*
+Output:
+
+Base no-args constructor
+Base no-args constructor
+Derived no-args constructor 
+Derived destructor 
+Base destructor
+Base destructor
+*/
+
+/*
+here because of the "using" keyword that imports the constructor of the class base in the derived one we can see that the destructor is called two times
+
+
+*/
