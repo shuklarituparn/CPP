@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.0)
+
+# Set the project name and version
+project(MyProject VERSION 1.0)
+
+# Add all source and header files in the current directory to the project
+file(GLOB SOURCES *.cpp *.h)
+
+# Create the executable
+add_executable(my_executable ${SOURCES})
+
+
+to include every .cpp and .h file in the current directory to a build 
+
+go to build folder 
+
+do 
+
+"cmake .."
+"make"
+"./my_executable"

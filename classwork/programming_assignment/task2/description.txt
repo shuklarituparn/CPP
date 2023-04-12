@@ -1,0 +1,31 @@
+Implement a custom vector class MyVector that is similar to the standard vector class in C++, but has an additional feature that allows for efficient insertion of elements in the middle of the vector. The class should have the following public member functions:
+
+MyVector(): Default constructor that initializes an empty vector.
+
+MyVector(size_t size, const T& val = T()): Constructor that initializes a vector with size elements, each initialized to val.
+
+MyVector(const MyVector& other): Copy constructor that initializes a vector with a copy of another vector other.
+
+MyVector& operator=(const MyVector& other): Assignment operator that assigns the contents of another vector other to this vector.
+
+T& operator[](size_t index): Returns a reference to the element at the specified index in the vector.
+
+const T& operator[](size_t index) const: Returns a const reference to the element at the specified index in the vector.
+
+size_t size() const: Returns the number of elements in the vector.
+
+size_t capacity() const: Returns the number of elements that the vector can hold before resizing is required.
+
+bool empty() const: Returns true if the vector is empty, false otherwise.
+
+void reserve(size_t new_capacity): Resizes the vector so that it can hold new_capacity elements without requiring reallocation.
+
+void resize(size_t new_size, const T& val = T()): Resizes the vector so that it has new_size elements. If new_size is greater than the current size, the new elements are initialized to val.
+
+void push_back(const T& val): Adds a new element to the end of the vector.
+
+void insert(size_t index, const T& val): Inserts a new element at the specified index in the vector.
+
+void clear(): Removes all elements from the vector.
+
+Your implementation should also throw an exception of type std::out_of_range if an index that is out of range is accessed.

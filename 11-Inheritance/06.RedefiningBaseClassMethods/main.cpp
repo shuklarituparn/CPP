@@ -1,7 +1,7 @@
 // Section 15
 // Redefining and Using Base Class Methods
 #include <iostream>
-#include "Savings_Account.h"
+
 
 using namespace std;
 
@@ -16,6 +16,62 @@ public:
     void withdraw(double amount);
 };
 
+
+class Savings_Account: public Account {
+    friend std::ostream &operator<<(std::ostream &os, const Savings_Account &account);
+protected:
+    double int_rate;
+public:
+    Savings_Account();
+    Savings_Account(double balance, double int_rate);
+    void deposit(double amount);
+    // Withdraw is inherited
+};
+
+Savings_Account::Savings_Account(double balance, double int_rate)
+    : Account(balance), int_rate{int_rate} {
+        
+    }
+
+Savings_Account::Savings_Account() 
+    : Savings_Account{0.0, 0.0} {
+        
+    }
+    
+void Savings_Account::deposit(double amount) {
+    amount = amount + (amount * int_rate/100);
+    Account::deposit(amount);
+}
+
+std::ostream &operator<<(std::ostream &os, const Savings_Account &account) {
+    os << "Savings account balance: " << account.balance << " Interest rate: " << account.int_rate;
+    return os;
+}
+
+
+Account::Account() 
+    : Account(0.0) {    // delegating constructor
+}
+        
+Account::Account(double balance)
+    : balance(balance) { 
+}
+            
+void Account::deposit(double amount) {   
+    balance += amount;
+}
+    
+void Account::withdraw(double amount) {
+    if (balance-amount >= 0)
+        balance-=amount;
+    else    
+        std::cout << "Insufficient funds" << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &os, const Account &account) {
+    os <<  "Account balance: " << account.balance;
+    return os;
+}
 
 
 int main() {

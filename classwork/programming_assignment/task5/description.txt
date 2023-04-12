@@ -1,0 +1,1 @@
+ Write the variadic template function, that will calculate the size of the given arguments. You can use sizeof() for that and unwrap (args...) operator

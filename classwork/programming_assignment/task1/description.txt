@@ -1,0 +1,11 @@
+Implement a generic class Stack using templates, which represents a stack data structure. The class should have the following public member functions:
+
+Stack(): Default constructor that initializes an empty stack.
+void push(const T& element): Adds a new element to the top of the stack.
+void pop(): Removes the top element from the stack.
+T& top(): Returns a reference to the top element of the stack.
+bool empty() const: Returns true if the stack is empty, false otherwise.
+The class should throw an exception if any of the following conditions are met:
+
+The pop or top functions are called on an empty stack.
+The push function is called on a full stack (the maximum size of the stack is 100 elements).

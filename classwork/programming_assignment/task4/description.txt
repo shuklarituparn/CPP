@@ -1,0 +1,1 @@
+Write two meta-functions, that will add/remove const qualifier to the given type (like it is done in <type_traits>)
