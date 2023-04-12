@@ -19,7 +19,7 @@ public:
   Checking_Account();
   Checking_Account(string name, double balace);
   void withdrawal(double amount);
-  void deposit(double amount);
+  //void deposit(double amount);
   void display(const std::vector<Checking_Account> &accounts);
 };
 class Trust_Account : public Account {
@@ -73,7 +73,7 @@ int main() {
 
     Checking_Account account1{ "human", 5000};
     account1.withdrawal(2000);
-    account1.deposit(3000);
+    account1.deposit(3000);  //deposit method is inherited from the account class
     Trust_Account account2{"richaf", 50000};
     account2.withdrawal(5000);
     account2.deposit(6000);
@@ -97,12 +97,12 @@ void Checking_Account::withdrawal(double amount) {
   }
 }
 
-void Checking_Account::deposit(double amount) {
+/*void Checking_Account::deposit(double amount) {
   balance_ = balance_ + amount;
   cout << "Thank you for depositing: " << amount << endl;
   ;
   cout << "You have a balance of: " << balance_ << endl;
-}
+}*/
 
 Trust_Account::Trust_Account()
     : name_{"No name"}, balance_(0.0), interest_rate_(0.01) {}
@@ -147,3 +147,33 @@ void display(const std::vector<Trust_Account> &accounts) {
     for (const auto &acc: accounts) 
         std::cout << acc << std::endl;
 }
+
+
+/*
+
+bool Trust_Account::withdraw(double amount) {
+    if (num_withdrawals >= max_withdrawals || (amount > balance * max_withdraw_percent))
+        return false;
+    else {
+        ++num_withdrawals;
+        return Savings_Account::withdraw(amount);
+    }
+}
+
+can also use other class method due to inheritance
+
+*/
+
+/*
+
+// Deposit additional $50 bonus when amount >= $5000
+bool Trust_Account::deposit(double amount) {
+    if (amount >= bonus_threshold)
+        amount += bonus_amount;
+    return Savings_Account::deposit(amount);
+}
+    
+
+
+
+*/
