@@ -20,3 +20,14 @@ public:
     double get_balance() const;
 };
 #endif
+
+/*
+The static keyword makes the variable a static class variable, which means that it is shared among all instances of the class, and its lifetime extends beyond the lifetime of any individual object.
+
+The constexpr keyword indicates that the variable is a compile-time constant, which means that its value can be determined at compile-time rather than at runtime.
+
+The const char* type indicates that the variable holds a pointer to a constant character array, which in this case is the string "Unnamed Account".
+
+
+
+*/
