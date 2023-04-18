@@ -1,0 +1,8 @@
+*.cmake    gitignore
+MakeFile   gitignore
+*.c        gitignore
+.PVS-Studio gitignore
+.idea      gitignore
+.vscode    gitignore
+cmake-build-debug/ gitignore
+
