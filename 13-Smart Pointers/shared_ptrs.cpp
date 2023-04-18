@@ -71,10 +71,105 @@ shared_ptr<Song> sp7(nullptr);
 
 // Initialize with another shared_ptr. sp1 and sp2
 // swap pointers as well as ref counts.
-sp1.swap(sp2);
+sp1.swap(sp2);//we can swap the pointers. as we are swapping the pointers. We swapping the second pointer sp2 with s1
 
 
     // Example 3
+/* 
+shared_ptr is also helpful in C++ Standard Library containers when you're using algorithms that copy elements. You can wrap elements in a shared_ptr, and then copy it into other containers with the understanding that the underlying memory is valid as long as you need it, and no longer. The following example shows how to use the remove_copy_if algorithm on shared_ptr instances in a vector.
+ */
+
+
+
+
+vector<shared_ptr<Song>> v {
+  make_shared<Song>(L"Bob Dylan", L"The Times They Are A Changing"),
+  make_shared<Song>(L"Aretha Franklin", L"Bridge Over Troubled Water"),
+  make_shared<Song>(L"Thalía", L"Entre El Mar y Una Estrella")
+};  //making a container of the shared_ptrs and then initializing it with different values
+
+
+/* C++ has two built-in types for characters, char, which is used with std::string, and wchar_t, which is used with std::wstring. If you write a string literal in regular quotes, C++ treats it as an string made of chars, which can be used with std::string. To tell C++ that you're trying to make a string literal made of wchar_ts - which is what you'll need to use to work with std::wstring, you need to prefix it with an L because that's just how C++ is defined. */
+
+vector<shared_ptr<Song>> v2;
+remove_copy_if(v.begin(), v.end(), back_inserter(v2), [] (shared_ptr<Song> s) 
+{
+    return s->artist.compare(L"Bob Dylan") == 0;
+});
+
+
+/* This line of code invokes the remove_copy_if() algorithm, which takes four arguments:
+
+    v.begin() and v.end(): the range of elements in the input vector v that we want to filter and copy.
+    back_inserter(v2): an iterator that points to the end of the output vector v2, indicating where the copied elements should be inserted.
+    [] (shared_ptr<Song> s) { return s->artist.compare(L"Bob Dylan") == 0; }: a lambda function that takes a shared_ptr<Song> object s and returns a bool. The lambda function is used to determine whether a given element in the input range should be filtered out or not. In this case, the lambda function checks whether the artist name of the current Song object pointed to by s is equal to "Bob Dylan", and returns true if it is.
+
+The remove_copy_if() algorithm copies all elements from the input range that do not satisfy the condition specified by the lambda function, and inserts them into v2 using the back_inserter iterator. Therefore, v2 will contain all Song objects from v that have an artist name different from "Bob Dylan". */
+
+
+
+for (const auto& s : v2)
+{
+    wcout << s->artist << L":" << s->title << endl;
+}  //in this example we are printing the artists that we have for the shared pts
+
+
+
+
+
     // Example 4
+
+
+/* You can use dynamic_pointer_cast, static_pointer_cast, and const_pointer_cast to cast a shared_ptr. These functions resemble the dynamic_cast, static_cast, and const_cast operators. The following example shows how to test the derived type of each element in a vector of shared_ptr of base classes, and then copy the elements and display information about them.
+ */
+
+
+vector<shared_ptr<MediaAsset>> assets { //making a vector of the shared pointer of the type Media assets named assets
+  make_shared<Song>(L"Himesh Reshammiya", L"Tera Surroor"),//first pointer to object that stores the values
+  make_shared<Song>(L"Penaz Masani", L"Tu Dil De De"),
+  make_shared<Photo>(L"2011-04-06", L"Redmond, WA", L"Soccer field at Microsoft.")
+};
+
+vector<shared_ptr<MediaAsset>> photos;
+
+copy_if(assets.begin(), assets.end(), back_inserter(photos), [] (shared_ptr<MediaAsset> p) -> bool
+{
+    // Use dynamic_pointer_cast to test whether
+    // element is a shared_ptr<Photo>.
+    shared_ptr<Photo> temp = dynamic_pointer_cast<Photo>(p);
+    return temp.get() != nullptr;
+});
+
+for (const auto&  p : photos)
+{
+    // We know that the photos vector contains only 
+    // shared_ptr<Photo> objects, so use static_cast.
+    wcout << "Photo location: " << (static_pointer_cast<Photo>(p))->location << endl;
+}
+
+
+
     // Example 6
+
+
+/* The following example shows how shared_ptr overloads various comparison operators to enable pointer comparisons on the memory that is owned by the shared_ptr instances. */
+
+
+
+    // Initialize two separate raw pointers.
+// Note that they contain the same values.
+auto song1 = new Song(L"Village People", L"YMCA");
+auto song2 = new Song(L"Village People", L"YMCA");
+
+// Create two unrelated shared_ptrs.
+shared_ptr<Song> p1(song1);    
+shared_ptr<Song> p2(song2);
+
+// Unrelated shared_ptrs are never equal.
+wcout << "p1 < p2 = " << std::boolalpha << (p1 < p2) << endl;
+wcout << "p1 == p2 = " << std::boolalpha <<(p1 == p2) << endl;
+
+// Related shared_ptr instances are always equal.
+shared_ptr<Song> p3(p2);
+wcout << "p3 == p2 = " << std::boolalpha << (p3 == p2) << endl;
 }
