@@ -1,94 +1,80 @@
-#include <algorithm>
 #include <iostream>
 #include <string>
-
+#include <algorithm>
 using namespace std;
 
-class Queue {
-private:
-    string* arr;
-    int front, rear, size;
+const int MAX_N = 1000005; // maximum number of freshmen
 
-public:
-    Queue(int maxSize) {
-        arr = new string[maxSize];
-        front = -1;
-        rear = -1;
-        size = maxSize;
-    }
+int a[MAX_N]; // array to store intelligence levels
+int n = 0; // number of freshmen currently remembered
 
-    bool isEmpty() {
-        return (front == -1 && rear == -1);
-    }
+void enqueue(int x) {
+    a[n++] = x;
+    cout << "ok\n";
+}
 
-    bool isFull() {
-        return (rear == size - 1);
-    }
-
-    void enqueue(string x) {
-        if (isFull()) {
-            cout << "Queue Overflow" << endl;
-            return;
+void dequeue() {
+    if (n == 0) {
+        cout << "error\n";
+    } else {
+        cout << a[0] << '\n';
+        for (int i = 1; i < n; i++) {
+            a[i - 1] = a[i];
         }
-        if (isEmpty()) {
-            front = 0;
-            rear = 0;
-        } else {
-            rear++;
-        }
-        arr[rear] = x;
+        n--;
     }
+}
 
-    void dequeue() {
-        if (isEmpty()) {
-            cout << "Queue Underflow" << endl;
-            return;
-        }
-        if (front == rear) {
-            front = -1;
-            rear = -1;
-        } else {
-            front++;
-        }
+void front() {
+    if (n == 0) {
+        cout << "error\n";
+    } else {
+        cout << a[0] << '\n';
     }
+}
 
-    string peek() {
-        if (isEmpty()) {
-            cout << "Queue is Empty" << endl;
-            return "";
-        }
-        return arr[front];
-    }
+void size() {
+    cout << n << '\n';
+}
 
-    void display() {
-        if (isEmpty()) {
-            cout << "Queue is Empty" << endl;
-            return;
-        }
-        for_each(arr + front, arr + rear + 1, [](string s){ cout << s << " "; });
-        cout << endl;
-    }
+void clear() {
+    n = 0;
+    cout << "ok\n";
+}
 
-    ~Queue() {
-        delete[] arr;
+void min() {
+    if (n == 0) {
+        cout << "error\n";
+    } else {
+        int min_val = *min_element(a, a + n);
+        cout << min_val << '\n';
     }
-};
+}
 
 int main() {
-    Queue q(5);
-
-    q.enqueue("2");
-    q.enqueue("World");
-    q.enqueue("How");
-    q.enqueue("Are");
-    q.enqueue("You");
-    q.display();
-
-    q.dequeue();
-    q.dequeue();
-    q.display();
-
-    cout << "Front element is: " << q.peek() << endl;
-
+    string cmd;
+    while (cin >> cmd) {
+        if (cmd == "enqueue") {
+            int x;
+            cin >> x;
+            enqueue(x);
+        } else if (cmd == "dequeue") {
+            dequeue();
+        } else if (cmd == "front") {
+            front();
+        } else if (cmd == "size") {
+            size();
+        } else if (cmd == "clear") {
+            clear();
+        } else if (cmd == "min") {
+            min();
+        }
+    }
     return 0;
 }
+
+
+/* This implementation uses an array a to store the intelligence levels, and n to keep track of how many freshmen are currently remembered. The enqueue function appends a new intelligence level to the end of the array, and increments n. The dequeue function removes the first element of the array (i.e., the oldest remembered freshman), shifts all remaining elements to the left, and decrements n. The front function simply prints the first element of the array. The size function prints n. The clear function resets n to 0. The min function finds the minimum intelligence level using the min_element function from the <algorithm> library.
+
+Note that this implementation assumes that the input is well-formed (i.e., each enqueue command is followed by an integer argument, and there are no extra arguments).
+ */
