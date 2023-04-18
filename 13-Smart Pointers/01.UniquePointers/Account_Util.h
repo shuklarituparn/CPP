@@ -5,8 +5,8 @@
 
 // Utility helper functions for Account * class
 
-void display(const std::vector<Account *> &accounts);
-void deposit(std::vector<Account *> &accounts, double amount);
-void withdraw(std::vector<Account *> &accounts, double amount);
+void display(const std::vector<Account *> &accounts);  //display method 
+void deposit(std::vector<Account *> &accounts, double amount);  //deposit method
+void withdraw(std::vector<Account *> &accounts, double amount);  //withddrawal method
 
 #endif

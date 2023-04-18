@@ -1,10 +1,10 @@
 #include "Account.h"
 
-Account::Account(std::string name, double balance) 
+Account::Account(std::string name, double balance) //default constructor
     : name{name}, balance{balance} {
 }
 
-bool Account::deposit(double amount) {
+bool Account::deposit(double amount) {  //deposit method
     if (amount < 0) 
         return false;
     else {
@@ -13,7 +13,7 @@ bool Account::deposit(double amount) {
     }
 }
 
-bool Account::withdraw(double amount) {
+bool Account::withdraw(double amount) {  //withdrawal method
     if (balance-amount >=0) {
         balance-=amount;
         return true;
@@ -21,7 +21,7 @@ bool Account::withdraw(double amount) {
         return false;
 }
 
-void Account::print(std::ostream &os) const  {
+void Account::print(std::ostream &os) const  {   //print method
     os.precision(2);
     os << std::fixed;
     os << "[Account: " << name << ": " << balance << "]";

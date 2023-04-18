@@ -1,7 +1,7 @@
 // Section 17
 // Unique Pointers 
 #include <iostream>
-#include <memory>
+#include <memory>  //use of the memory library so that we can use the smart pointers 
 #include <vector>
 
 #include "Account.h"
@@ -32,18 +32,18 @@ int main() {
 //   if (!t1) 
 //       std::cout << "t1 is nullptr" << std::endl;
        
-       std::unique_ptr<Account> a1 = std::make_unique<Checking_Account>("Moe", 5000);
-       std::cout << *a1 << std::endl;
-       a1->deposit(5000);
-       std::cout << *a1 << std::endl;
+       std::unique_ptr<Account> a1 = std::make_unique<Checking_Account> ("Moe", 5000); //creating a unique pointer of the type class and having a name a1. and of object checking account
+       std::cout << *a1 << std::endl; //dereferencing the pointer and printing the value
+       a1->deposit(5000); //using the pointer to assign the value (or to deposit 5000)
+       std::cout << *a1 << std::endl;//dereferencing the pointer and printing the value, it now shows 10000
 
-       std::vector<std::unique_ptr<Account>> accounts;
+       std::vector<std::unique_ptr<Account>> accounts;  //creating a vector of unique pointers of the type Account and the name accounts
 
-       accounts.push_back( make_unique<Checking_Account>("James", 1000));
-       accounts.push_back( make_unique<Savings_Account>("Billy", 4000, 5.2));
+       accounts.push_back( make_unique<Checking_Account>("James", 1000));//adding the data by just using the vector method of push_back (here making an unique pointer of the object checking_account)
+       accounts.push_back( make_unique<Savings_Account>("Billy", 4000, 5.2));//here making the unique pointer of the obejct saving account and initializing it with data
        accounts.push_back( make_unique<Trust_Account>("Bobby", 5000, 4.5));
 
-        for (const auto &acc: accounts)
+        for (const auto &acc: accounts)  //dereferencing the pointer and using the auto keyword and printing them
             std::cout << *acc << std::endl;
        return 0;
 }

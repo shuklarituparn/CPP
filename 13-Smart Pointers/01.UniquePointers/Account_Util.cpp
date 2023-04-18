@@ -2,7 +2,7 @@
 #include "Account_Util.h"
 
 // Displays Account objects in a  vector of Account object pointers
-void display(const std::vector<Account *> &accounts) {
+void display(const std::vector<Account *> &accounts) { //method that is passed vector of the pointers of class account and the address
     std::cout << "\n=== Accounts===========================================" << std::endl;
     for (const auto acc: accounts) 
         std::cout << *acc << std::endl;
