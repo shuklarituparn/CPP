@@ -1,6 +1,0 @@
-g++ *.cpp *.h -Wall && ./a.out
-
-to run multiple file at once..
-
-
-still learn about the making make files or cmake 
