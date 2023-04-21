@@ -41,3 +41,6 @@ LOG("The value of pi is %f", 3.14159);
 In summary, an ellipsis is a versatile token in C++ that can be used for declaring variadic templates, variadic functions, and variadic macros. */
 
 /* In summary, ##__VA_ARGS__ is used in variadic macros to handle the case where the macro is called with no arguments, by removing the trailing comma before the variadic arguments. */
+
+
+///
