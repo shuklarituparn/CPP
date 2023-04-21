@@ -172,4 +172,5 @@ wcout << "p1 == p2 = " << std::boolalpha <<(p1 == p2) << endl;
 // Related shared_ptr instances are always equal.
 shared_ptr<Song> p3(p2);
 wcout << "p3 == p2 = " << std::boolalpha << (p3 == p2) << endl;
+
 }

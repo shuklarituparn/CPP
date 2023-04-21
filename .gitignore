@@ -1,0 +1,8 @@
+*.cmake
+MakeFile
+*.c
+.PVS-Studio/
+.idea/
+.vscode/
+cmake-build-debug/
+
