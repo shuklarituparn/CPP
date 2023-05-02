@@ -1,0 +1,11 @@
+In addition to the basic move semantics that allow for the efficient transfer of resources from one object to another, there are some advanced types of move semantics in C++ that provide additional benefits and flexibility. Here are a few examples:
+
+    Perfect forwarding: Perfect forwarding is a technique that allows functions to forward arguments to other functions without losing their type information. This can be useful when working with templates, as it allows us to preserve the exact types of arguments that were passed in. Perfect forwarding is implemented using forwarding references, which are rvalue references that can also bind to lvalues under certain conditions.
+
+    Move-only types: Move-only types are types that are not copyable but can be moved. These types are typically used to represent resources that cannot be duplicated, such as unique locks, file handles, or network sockets. By disallowing copying, we ensure that the resource is always owned by a single object at a time, and by allowing moving, we can transfer ownership of the resource between objects.
+
+    Non-copyable but movable types: Some types cannot be copied but can be moved, such as std::unique_ptr or std::future. These types provide a way to transfer ownership of a resource while also ensuring that there are no accidental copies or duplicates.
+
+    Conditional move semantics: In some cases, it may not be desirable to always move resources, even when an rvalue reference is passed in. For example, if an object is small and cheap to copy, it might be more efficient to copy it instead of moving it. To handle these cases, we can use conditional move semantics, which use type traits or other criteria to determine whether to move or copy an object.
+
+Overall, these advanced types of move semantics provide additional flexibility and control over how resources are managed in C++, allowing for more efficient and safe code.
