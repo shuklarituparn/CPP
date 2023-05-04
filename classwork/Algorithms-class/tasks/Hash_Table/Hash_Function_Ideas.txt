@@ -1,0 +1,37 @@
+
+
+We should always take the hash function such that the value should be uniformly distributed in the table and should not be contained or collected in the table. 
+
+
+If using chaining, the hash function size can be anything. But if using the linear probing, it should be double the number of elements. In linear probing, if we are going to enter 20 elements then the size of the hash table should be 40.
+
+Some common ideas for generating the hash function are 
+
+1. Modulus: We can use the mod operation to generate hash value for a given key. we can use key%size to generate some index. We can modify this method by using x%size+i or other variation.
+
+2.Mid-squares: We can use the middle digits of the squares of the keys to generate hash value for a given key. For example if we have a key 12, then we can square it so get 144 and then store it on index 4. Or we can square 13 to get 169 to store it in Index. If we have a big number then we can square and take two middle  digits or some varaition of that.
+
+3. Folding: We can fold the key on itself to generate, and then add them or something to find an index to where store the key.
+
+for example, if we have the key 123347 then we can fold the digits on themselves to generate
+
+12
+33
+47
+---
+92 
+
+so we can use the number 92 as the index or we can further add the digits 9+2 to get 11 which we can use as the index to store the key.
+
+For a key like "ABC"
+
+we can convert them to ASCII and then add them
+
+65
+66
+67
+---
+198 it can be taken as the index to store the key. If we just want the two digits then we just take 98
+
+
+
