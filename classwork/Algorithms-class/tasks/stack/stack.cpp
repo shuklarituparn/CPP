@@ -59,3 +59,6 @@ int main() {
 
   return 0;
 }
+
+//copy the implementation of the stack and then change the output to print the element at the position 0
+
