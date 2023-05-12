@@ -55,7 +55,7 @@ char *convert(char *infix) {
 
   while (infix[i] != '\0') {//loop through the infix
     if (isOperand(infix[i])) {//check if the current character is the operand
-      postfix[j++] = infix[i++]; //added to postfix string and both increment by `
+      postfix[j++] = infix[i++]; //added to postfix string and both increment by 1
     } else {
       if (stak.empty() || outPrecedence(infix[i]) > inPrecedence(stak.top())) {
         stak.push(infix[i++]);
