@@ -19,7 +19,9 @@ bool BinarySearch(const int* begin, const int* end, int target) {
 }
 
 int main() {
-    int n;
+
+    int a
+ /*    int n;
     std::cin >> n;
 
     int a[n];
@@ -36,7 +38,7 @@ int main() {
 
         bool found = BinarySearch(a + l, a + r, t);
         std::cout << (found ? "YES" : "NO") << std::endl;
-    }
+    } */
 
     return 0;
 }
