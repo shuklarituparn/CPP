@@ -204,9 +204,7 @@ void Tree::iterativePostorder(Node *current) {
   }
   cout << endl;
 }
-
 int main() {
-
   Tree bt;
 
   bt.CreateTree();
@@ -243,6 +241,10 @@ int main() {
 }
 
 /*
-emplace() is a member function of the C++ STL (Standard Template Library) queue container that is used to insert a new element into the queue. It constructs the new element in place, directly in the memory of the container, using the provided arguments. It is similar to the push() function of the queue container, but emplace() constructs the element in place without creating a temporary object, which can improve performance and reduce memory usage.
+emplace() is a member function of the C++ STL (Standard Template Library) queue
+container that is used to insert a new element into the queue. It constructs the
+new element in place, directly in the memory of the container, using the
+provided arguments. It is similar to the push() function of the queue container,
+but emplace() constructs the element in place without creating a temporary
+object, which can improve performance and reduce memory usage.
 */
-
