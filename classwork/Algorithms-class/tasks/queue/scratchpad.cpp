@@ -1,8 +1,10 @@
 #include <iostream>
-#include <string>
+//#include <string>
 #include <vector>
 #include <algorithm>
 using namespace std;
+
+
 
 vector<int> v; // vector to store intelligence levels
 
