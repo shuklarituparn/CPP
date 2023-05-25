@@ -7,6 +7,10 @@
 #include <vector>
 
 class LSDRadixSort {
+
+public:
+    long long *arr;
+    int size;
 public:
     static void Sort(long long* arr, int size) {
         const int kBits = 64;
@@ -37,6 +41,15 @@ public:
             delete[] i;
         }
     }
+
+void Data(int num_inputs){
+        size=num_inputs;
+        arr= new long long [size];
+
+    for (int i = 0; i < size; ++i) {
+        std::cin>>arr[i];
+    }
+    }
 };
 
 void PrintArray(const long long* arr, int size) {
@@ -62,3 +75,14 @@ int main() {
 
     return 0;
 }
+
+/*
+ * Static Member Function: When a member function is declared as static, it means that the function belongs to the
+ * class itself rather than an instance of the class. Static member functions can be called using the class name
+ * without creating an object of the class. They don't have access to the instance-specific data members and can
+ * only access other static members of the class.
+
+    Static Member Variable: A static member variable is shared among all the instances of a class. It exists
+    independently of any class instance, and all the objects of the class share the same copy of the static member
+    variable. Static member variables must be defined outside the class declaration to allocate memory for them.
+ */
