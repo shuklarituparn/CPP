@@ -1,0 +1,63 @@
+    Organization and Encapsulation: Static members, such as static member functions and static
+    member variables, are associated with the class rather than individual objects.
+    They provide a way to organize and encapsulate related functionality and data within the class
+    scope. Static members can be accessed using the class name, making it clear that they are
+    associated with the class itself.
+
+    Memory Efficiency: Static member variables are allocated memory only once, regardless of the
+     number of instances of the class. This can result in memory savings when multiple objects of
+      the class are created, as all instances share the same static member variable. Static member
+      variables are particularly useful for storing shared data or constants that are common to
+      all objects.
+
+    Accessible without Object Instantiation: Static member functions can be called using the class
+     name without the need to create an object of the class. This allows you to use the functionality provided by the
+     static member functions even if you don't have an instance of the class. This can be useful for utility functions
+     or helper methods that don't depend on instance-specific data.
+
+    Global Scope Control: In the context of file scope, declaring a variable or function as static
+    limits its visibility to the current translation unit (source file). This effectively restricts
+     its usage to within the file, providing better control over the global scope and avoiding naming conflicts with other files.
+
+    Constant Expressions: Static member variables can be declared as constexpr, allowing them to
+    be evaluated at compile-time. This enables optimization opportunities and the ability to use them in contexts
+    that require constant expressions.
+
+It's important to use static appropriately and consider its implications for the design and
+functionality of your code.
+
+
+class MathUtils {
+public:
+    static double square(double x) {
+        return x * x;
+    }
+};
+
+int main() {
+    double num = 5.0;
+    double squaredNum = MathUtils::square(num);  // Access static member function
+    cout << "Square of " << num << " is " << squaredNum << endl;
+
+    return 0;
+}
+
+
+In this example, the static member function square in the MathUtils class performs a utility operation
+(squaring a number). Since the function is static, it can be called using the class name without creating an object.
+ This allows easy access to common utility operations without the need for an instance of the class.
+
+
+//In above example we can call the static function without making an object
+
+
+/*
+ * Static Member Function: When a member function is declared as static, it means that the function belongs to the
+ * class itself rather than an instance of the class. Static member functions can be called using the class name
+ * without creating an object of the class. They don't have access to the instance-specific data members and can
+ * only access other static members of the class.
+
+    Static Member Variable: A static member variable is shared among all the instances of a class. It exists
+    independently of any class instance, and all the objects of the class share the same copy of the static member
+    variable. Static member variables must be defined outside the class declaration to allocate memory for them.
+ */
